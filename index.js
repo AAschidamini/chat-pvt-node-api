@@ -24,11 +24,12 @@ io.on("connect", (socket) => {
 
     socket.emit("message", {
       user: "admin",
-      text: `${user.name}, aguarde o profissional se conectar.`,
+      text: `Você se conectou no atendimento Auxilium.`,
     });
-    socket.broadcast
-      .to(user.room)
-      .emit("message", { user: "admin", text: `${user.name} has joined!` });
+    socket.broadcast.to(user.room).emit("message", {
+      user: "admin",
+      text: `${user.name} entrou na conversa!`,
+    });
 
     io.to(user.room).emit("roomData", {
       room: user.room,
@@ -52,7 +53,7 @@ io.on("connect", (socket) => {
     if (user) {
       io.to(user.room).emit("message", {
         user: "Admin",
-        text: `${user.name} has left.`,
+        text: `${user.name} deixou a conversa.`,
       });
       io.to(user.room).emit("roomData", {
         room: user.room,
