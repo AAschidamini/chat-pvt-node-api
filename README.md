@@ -9,11 +9,5 @@ npm install
 Comando para rodar o projeto:
 
 ```
-npm start
-```
-
-ou 
-
-```
 node index.js
 ```
